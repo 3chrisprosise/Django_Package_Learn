@@ -71,11 +71,19 @@ INSTALLED_APPS = [
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://10.55.91.107:6379/1",
+        "LOCATION": [
+            "redis://10.55.91.107:6379/1",
+            "redis://127.0.0.1:6379/1",  # 运用不同的redis服务器
+        ],
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
             "PASSWORD": "123456",
-            #"COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor"  # compresser defaut = closed
+            # "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor",  # compresser defaut = closed
+            # "CONNECTION_POOL_KWARGS": {"max_connections": 100},   # set the max connect pool
+            # "SERIALIZER": "django_redis.serializers.json.JSONSerializer",   # 使用Json序列化数据
+            # "PARSER_CLASS": "redis.connection.HiredisParser",             # 使用 Hiredis 加快查询速度 需要下载Hiredis包
+            # "SOCKET_CONNECT_TIMEOUT": 5,  # in seconds # 建立链接超时设定
+            # "SOCKET_TIMEOUT": 5,  # in seconds  # 读写超时设定
         }
     }
 }
