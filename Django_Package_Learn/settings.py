@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import django_redis
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -65,14 +66,52 @@ INSTALLED_APPS = [
 ]
 
 
-# redis Cache set
+# start of the django-redis cache set
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': ''
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": [
+            "redis://10.55.91.107:6379/1",
+            "redis://127.0.0.1:6379/1",  # 运用不同的redis服务器
+        ],
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "PASSWORD": "123456",
+            # "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor",  # compresser defaut = closed
+            # "CONNECTION_POOL_KWARGS": {"max_connections": 100},   # set the max connect pool
+            # "SERIALIZER": "django_redis.serializers.json.JSONSerializer",   # 使用Json序列化数据
+            # "PARSER_CLASS": "redis.connection.HiredisParser",             # 使用 Hiredis 加快查询速度 需要下载Hiredis包
+            # "SOCKET_CONNECT_TIMEOUT": 5,  # in seconds # 建立链接超时设定
+            # "SOCKET_TIMEOUT": 5,  # in seconds  # 读写超时设定
+        }
     }
 }
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
+REDIS_TIMEOUT = 7*24*60*60
+CUBES_REDIS_TIMEOUT = 60*60
+NEVER_REDIS_TIMEOUT = 365*24*60*60
+
+# start of the redis
+REDIS_HOST = '127.0.0.1'
+REDIS_PROT = 6379
+REDIS_DBS = {
+    "DB1": 1,
+    "DB2": 2,
+}
+REDIS_PASSWD = '123456'
+
+REDIS_CONNECT_STR = {
+
+    'redis': '//[:password]@localhost:6379/0',
+    'rediss': '//[:password]@localhost:6379/0',
+    'unix': '/[:password]@/path/to/socket.sock?db=0',
+}
+# end of the redis set
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
