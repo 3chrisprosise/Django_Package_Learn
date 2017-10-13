@@ -18,5 +18,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.test_DJredis),
+    url(r'^pyredis$',views.test_redis),
+
 
 ]
