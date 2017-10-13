@@ -218,7 +218,7 @@ CKEDITOR.editorConfig = function( config )
     config.toolbar = 'MyToobar';
     config.toolbar_MyToobar = [
         // ['Source','-','Save','NewPage','Preview','-','Templates'],
-        ['Source','-','Preview','-','Templates'],
+        //['Source','-','Preview','-','Templates'],
         // ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print', 'SpellChecker', 'Scayt'],
         ['Cut','Copy','Paste','PasteText','-','Print'],
         // ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
