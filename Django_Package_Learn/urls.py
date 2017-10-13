@@ -23,11 +23,11 @@ from django.views.static import serve
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
-    url(r'^editor', include("Ckeitor_Learn.urls")),
-    url(r'^all_auth', include("All_auth.urls")),
-    url(r'^email_sender', include("Email_Sender.urls")),
-    url(r'^redis', include("Django_Redis.urls")),
-    url(r'^wechat', include("Wechat_Sdk.urls")),
+    url(r'^editor/', include("Ckeitor_Learn.urls")),
+    url(r'^all_auth/', include("All_auth.urls")),
+    url(r'^email_sender/', include("Email_Sender.urls")),
+    url(r'^redis/', include("Django_Redis.urls")),
+    url(r'^wechat/', include("Wechat_Sdk.urls")),
 
     # Start Of Media URL
     url(r'^media/(?P<path>.*)$',  serve, {"document_root": MEDIA_ROOT}),

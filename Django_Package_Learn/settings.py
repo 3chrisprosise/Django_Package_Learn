@@ -73,7 +73,7 @@ CACHES = {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": [
             "redis://10.55.91.107:6379/1",
-            "redis://127.0.0.1:6379/1",  # 运用不同的redis服务器
+            "redis://10.55.91.107:6379/1",  # 运用不同的redis服务器
         ],
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
@@ -220,10 +220,9 @@ FILE_UPLOAD_HANDLERS = (
     'django.core.files.uploadhandler.TemporaryFileUploadHandler',
 )
 
-DEFAULT_FILE_STORAGE = (
 
-    'django.core.files.storage.FileSystemStorge',
-)
+
+
 
 '''Start of Ckeditor Settings'''
 
@@ -276,3 +275,16 @@ CKEDITOR_ALLOW_NONIMAGE_FILES = False
 CKEDITOR_BROWSE_SHOW_DIRS = True
 
 '''End Of The Ckeditor Settings'''
+
+
+''' Start of Emial SMTP  Settings '''
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '1337074512@qq.com'
+EMAIL_HOST_PASSWORD = 'zcmgutpwhjuzgdfa'
+DEFAULT_FROM_EMAIL = '1337074512@qq.com'
+# EMAIL_USE_SSL = True
+
+''' End of Email Smtp Settings '''
