@@ -218,7 +218,7 @@ CKEDITOR.editorConfig = function( config )
     config.toolbar = 'MyToobar';
     config.toolbar_MyToobar = [
         // ['Source','-','Save','NewPage','Preview','-','Templates'],
-        //['Source','-','Preview','-','Templates'],
+        ['Source','-','Preview','-','Templates'],
         // ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print', 'SpellChecker', 'Scayt'],
         ['Cut','Copy','Paste','PasteText','-','Print'],
         // ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
@@ -238,10 +238,15 @@ CKEDITOR.editorConfig = function( config )
         ['TextColor','BGColor']
         ];
 
+
+    // 预览功能单独拿出来做 perview
     //config.filebrowserUploadUrl="ckeditorUpload";  // 定义
     config.filebrowserImageBrowseUrl='/ckeditor/browse/?CKEditor=id_Body&CKEditorFuncNum=1&langCode=zh';  //  定义浏览服务器上图片的界面
     //config.filebrowserUploadUrl='/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
     config.filebrowserImageUploadUrl='/ckeditor/upload/?CKEditor=id_Body&CKEditorFuncNum=1&langCode=zh';
     config.image_previewText=' '; //预览区域显示内容
+    config.autoUpdateElement = false;
+    config.disableObjectResizing = true;
+    config.tabSpaces = 4;
     // config.filebrowserFlashUploadUrl='/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
 };
