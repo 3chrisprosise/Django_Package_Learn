@@ -63,6 +63,12 @@ INSTALLED_APPS = [
     # Wechat
     'Wechat_Sdk',
 
+    # Django Form
+    'DjangoForm',
+
+    # DjangoGenericView
+    'DjangoGenericView',
+
 ]
 
 
